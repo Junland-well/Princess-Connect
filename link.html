@@ -1,0 +1,143 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Here are the friends you want!</title>
+<meta name="description" content="A unique resource for thoughtful, food-loving eaters and home cooks who have a palate for plant-based eating - for themselves or their loved ones; three days a week, or every day of the year." />
+<meta name="author" content="Julie Shah Lamba" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script type="text/javascript" src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<style type="text/css">
+	.pic1{position: absolute;top:60px;left:20px;float:left;}
+	.pic1 div,.pic2 div{float:left;}
+	.pic2{position: absolute;top:288px;left:20px;float:left;}
+	.pic1 img,.pic2 img,.pp3 img{width:150px;padding:0 10px;}
+</style>
+</head>
+<body>
+	<div style="float:left">
+		<img src="img/b0.png" style="width:880px;float:left;">
+		<div class="pic1">
+			<div  class="p1"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p2"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p3"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p4"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p5"><img src="img/b1.png"/><br><span></span><i></i></div>
+		</div>
+		<div class="pic2">
+			<div  class="p6"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p7"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p8"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p9"><img src="img/b1.png"/><br><span></span><i></i></div>
+			<div  class="p10"><img src="img/b2.png"/><br><span></span><i></i></div>
+		</div>
+		<div style="position: relative;float:left;top:200px;width:20%;text-align: center;">
+			<img src="img/se.jpg" style="width:50%">
+			<div><button onclick="chou()">抽抽抽</button></div>
+		</div>
+	</div>
+	<div style="color:red">
+		数据统计：
+	</div>
+	<div class="all">
+		总抽取次数：<span>0</span>
+	</div>
+	<div class="three">
+		三星数量：<span>0</span>
+	</div>
+	<div class="two">
+		二星数量：<span>0</span>
+	</div>
+	<div class="one">
+		一星数量：<span>0</span>
+	</div>
+	<div>
+		已获得三星：
+	</div>
+	<div class="pp3">
+		<img src="img/b3.png">
+	</div>
+	
+<script type="text/javascript">
+	function chou(){
+			/*角色对照*/
+		var a1 = new Array('凯露','可可萝','佩可莉姆','莉玛','玉泉美咲','双叶碧','绫濑由加莉','天野铃莓','风宫依里','栗林胡桃','未奏希','士条怜','草野优衣','春咲日和莉');
+
+		var a2 = new Array('宵浜深月','大神美冬','宫坂珠希','远见空花','三角千歌','柏崎栞','野户真阳','上喜忍','仓石惠理子','茜美美','喜屋武香织','美波铃奈','虹村雪','出云宫子','风宫茜里');
+
+		var a3 = new Array('姬塔','莫妮卡·拜斯温特','星野静流','白银纯','安芸真琴','藤堂秋乃','妮侬・朱贝尔','樱井望','佐佐木咲恋','支仓伊绪','柏崎初音','衣之咲璃乃','姬宫真步','柊杏奈');
+
+		$(".pic1 span").html("");
+		$(".pic2 span").html("");
+
+		var one = 0;
+		var two = 0;
+		var three = 0;
+
+		for(var i=1;i<11;i++)
+		{
+			var x = 1000;
+		    var y = 0;
+		    var q = parseInt(Math.random() * (x - y + 1));
+		    var a = 1;
+		    var ap = a1;
+
+		    if(i==10){
+		    	if(q<=25){
+		    		a = 3;
+					ap = a3;
+					three++;
+		    	}else{
+		    		a = 2;
+					ap = a2;
+					two++;
+		    	}
+		    }else{
+		    	if(q<=180 && q>25){
+					a = 2;
+					ap = a2;
+					two++;
+				}else if(q<=25){
+					a = 3;
+					ap = a3;
+					three++;
+				}else{
+					one++;
+				}
+		    }
+		    
+			var l = ap.length;
+			var girl = parseInt(Math.random()*(l-1));
+			var sp = 'img/star'+a+'/'+(girl+1)+'.png';
+			$(".p"+i).children('img').attr('src',sp);
+			if(a==3){
+				var ht = '<img src="'+sp+'">';
+				$(".pp3").append(ht);
+			}
+			$(".p"+i).children('i').text(ap[girl]);
+			for(var j=1;j<=a;j++){
+				var ht = '<img src="img/st.png" style="width:30px;padding:0;">';
+				$(".p"+i).children('span').append(ht);
+			}
+		}
+
+		var ss = $(".all span").text();
+		var s1 = $(".one span").text();
+		var s2 = $(".two span").text();
+		var s3 = $(".three span").text();
+		$(".all span").text(parseInt(ss)+10);
+		$(".one span").text(parseInt(s1)+parseInt(one));
+		$(".two span").text(parseInt(s2)+parseInt(two));
+		$(".three span").text(parseInt(s3)+parseInt(three));
+
+	}
+
+</script>
+</body>
+</html>
